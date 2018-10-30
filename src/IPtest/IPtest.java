@@ -5,6 +5,7 @@ import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
 
+//listar nätverksinterface
 
 public class IPtest {
     
