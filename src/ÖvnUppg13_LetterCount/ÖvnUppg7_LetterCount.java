@@ -1,4 +1,4 @@
-package ÖvnUppg10_LetterCount;
+package ÖvnUppg13_LetterCount;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -11,16 +11,19 @@ public class ÖvnUppg7_LetterCount {
     public ÖvnUppg7_LetterCount () {
 
         String temp;
-        int[] fördelning = new int[100];
+        int[] fördelning = new int[1000];
+        int total = 0;
 
         try{
-            URL url = new URL("http://www.puzzlers.org/pub/wordlists/pocket.txt");
+            URL url = new URL("https://github.com/dwyl/english-words/blob/master/words.txt?raw=true");
         
             try (BufferedReader in = new BufferedReader(
                     new InputStreamReader(url.openStream()))) {
                 while ((temp = in.readLine()) != null ){
+                    //System.out.println(temp);
                     int size = temp.length();
                     fördelning[size]++;
+                    total++;
                 }
         
                 for (int i = 0; i < fördelning.length; i++){
@@ -28,9 +31,10 @@ public class ÖvnUppg7_LetterCount {
                         System.out.println("Antal ord med "+ i +" bokstäver: "
                                 +fördelning[i] );
                     }
-                    
                 }
+                
             }
+            System.out.println("Totala mängden ord: "+total);
         }
         catch (MalformedURLException e){
             e.printStackTrace();

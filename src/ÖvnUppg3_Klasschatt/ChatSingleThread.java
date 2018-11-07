@@ -12,6 +12,11 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.Timer;
+
+//This solution is not really single thread, it only looks that way.
+//Works because actionPerformed is executed in the Event Dispatch Thread
+//the rest of the code is not.
 
 
 public class ChatSingleThread extends JFrame implements ActionListener {
@@ -24,6 +29,7 @@ public class ChatSingleThread extends JFrame implements ActionListener {
     JScrollPane sp = new JScrollPane(txt);
     JTextField skriv = new JTextField();
     JButton sluta = new JButton("Koppla ner");
+    Timer timer = new Timer(10000, this);
     
     public ChatSingleThread(String användarnamn, String gruppadr, int portNr) throws IOException{
         namn = användarnamn;
@@ -44,10 +50,12 @@ public class ChatSingleThread extends JFrame implements ActionListener {
         setSize(400, 250);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        timer.start();
         
         byte[] data = new byte[1024];
         while(true){
             try{
+                //System.out.println("received, is EventDispatchThread: "+ javax.swing.SwingUtilities.isEventDispatchThread());
                 DatagramPacket packet = new DatagramPacket(data, data.length);
                 so.receive(packet);
                 String medd = new String(data, 0, packet.getLength());
@@ -64,7 +72,7 @@ public class ChatSingleThread extends JFrame implements ActionListener {
         byte[] data = (namn + ": " +s).getBytes();
         DatagramPacket packet= new DatagramPacket(data, data.length, iadr, port);
         try{
-            so.send(packet);
+                so.send(packet);
         }
         catch (IOException e){
             e.printStackTrace();
@@ -72,6 +80,7 @@ public class ChatSingleThread extends JFrame implements ActionListener {
     }
     
     public void actionPerformed(ActionEvent e){
+        //System.out.println("ActionPerformed, is EventDispatchThread: "+ javax.swing.SwingUtilities.isEventDispatchThread());
         if(e.getSource() == skriv){
             sändMedd(skriv.getText());
             skriv.setText("");
@@ -86,7 +95,9 @@ public class ChatSingleThread extends JFrame implements ActionListener {
                 dispose();
                 System.exit(0);
             }
-                
+        }
+        else {
+            sändMedd("Hej allesammans");
         }
     }
     
