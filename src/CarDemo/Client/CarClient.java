@@ -19,7 +19,8 @@ public class CarClient {
     try (
         Socket addressSocket = new Socket(hostName, portNumber);
             
-        PrintWriter out = new PrintWriter(addressSocket.getOutputStream(), true);
+        PrintWriter out = new PrintWriter(addressSocket.getOutputStream(),
+                true);
         BufferedReader in = new BufferedReader(
             new InputStreamReader(addressSocket.getInputStream()));
     )

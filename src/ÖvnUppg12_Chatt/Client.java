@@ -1,4 +1,4 @@
-package ÖvnUppg11_Chatt;
+package ÖvnUppg12_Chatt;
 
 //Kod modifierad utifrån exemplen på http://cs.lmu.edu/~ray/notes/javanetexamples/
 

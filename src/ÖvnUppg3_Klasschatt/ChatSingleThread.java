@@ -31,7 +31,8 @@ public class ChatSingleThread extends JFrame implements ActionListener {
     JButton sluta = new JButton("Koppla ner");
     Timer timer = new Timer(10000, this);
     
-    public ChatSingleThread(String användarnamn, String gruppadr, int portNr) throws IOException{
+    public ChatSingleThread(String användarnamn, 
+            String gruppadr, int portNr) throws IOException{
         namn = användarnamn;
         iadr = InetAddress.getByName(gruppadr);
         port = portNr;
@@ -55,10 +56,14 @@ public class ChatSingleThread extends JFrame implements ActionListener {
         byte[] data = new byte[1024];
         while(true){
             try{
-                //System.out.println("received, is EventDispatchThread: "+ javax.swing.SwingUtilities.isEventDispatchThread());
-                DatagramPacket packet = new DatagramPacket(data, data.length);
+                System.out.println("received, "
+                        + "is EventDispatchThread: "
+        + javax.swing.SwingUtilities.isEventDispatchThread());
+                DatagramPacket packet = new DatagramPacket(data, 
+                        data.length);
                 so.receive(packet);
-                String medd = new String(data, 0, packet.getLength());
+                String medd = new String(data, 0, 
+                        packet.getLength());
                 txt.append(medd +"\n");
             }
             catch (IOException e){
@@ -70,7 +75,8 @@ public class ChatSingleThread extends JFrame implements ActionListener {
     private void sändMedd(String s){
         
         byte[] data = (namn + ": " +s).getBytes();
-        DatagramPacket packet= new DatagramPacket(data, data.length, iadr, port);
+        DatagramPacket packet= new DatagramPacket(data, 
+                data.length, iadr, port);
         try{
                 so.send(packet);
         }
@@ -80,7 +86,8 @@ public class ChatSingleThread extends JFrame implements ActionListener {
     }
     
     public void actionPerformed(ActionEvent e){
-        //System.out.println("ActionPerformed, is EventDispatchThread: "+ javax.swing.SwingUtilities.isEventDispatchThread());
+        System.out.println("ActionPerformed, is EventDispatchThread:"
+                + javax.swing.SwingUtilities.isEventDispatchThread());
         if(e.getSource() == skriv){
             sändMedd(skriv.getText());
             skriv.setText("");
@@ -103,6 +110,7 @@ public class ChatSingleThread extends JFrame implements ActionListener {
     
     public static void main (String[] args) throws IOException{
         String namn = "Sigrun";
-        ChatSingleThread c = new ChatSingleThread(namn, "234.235.236.237", 12541);
+        ChatSingleThread c = new ChatSingleThread(namn, 
+                "234.235.236.237", 12540);
     }
 }

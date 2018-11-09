@@ -1,4 +1,4 @@
-package ÖvnUppg11_Chatt;
+package ÖvnUppg12_Chatt;
 
 import java.io.IOException;
 import java.net.ServerSocket;

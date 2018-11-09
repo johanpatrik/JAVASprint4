@@ -25,7 +25,8 @@ public class ChatMultiThreaded extends JFrame implements ActionListener {
     JTextField skriv = new JTextField();
     JButton sluta = new JButton("Koppla ner");
     
-    public ChatMultiThreaded(String användarnamn, String gruppadr, int portNr) throws IOException{
+    public ChatMultiThreaded(String användarnamn, 
+            String gruppadr, int portNr) throws IOException{
         namn = användarnamn;
         iadr = InetAddress.getByName(gruppadr);
         port = portNr;
@@ -33,6 +34,7 @@ public class ChatMultiThreaded extends JFrame implements ActionListener {
         so = new MulticastSocket(port);
         so.joinGroup(iadr);
         new MottagareMultiThreaded(so, txt);
+        
         sändMedd("UPPKOPPLAD");
         
         setTitle("Chat "+namn);
@@ -50,7 +52,8 @@ public class ChatMultiThreaded extends JFrame implements ActionListener {
     private void sändMedd(String s){
         
         byte[] data = (namn + ": " +s).getBytes();
-        DatagramPacket packet= new DatagramPacket(data, data.length, iadr, port);
+        DatagramPacket packet= new DatagramPacket(data, 
+                data.length, iadr, port);
         try{
             so.send(packet);
         }
@@ -81,6 +84,7 @@ public class ChatMultiThreaded extends JFrame implements ActionListener {
     public static void main (String[] args) throws IOException{
         String namn = "Sigrun";
         //Chat c = new Chat(namn, "234.235.236.237", 12540);
-        ChatMultiThreaded c = new ChatMultiThreaded(namn, "234.235.236.237", 12540);
+        ChatMultiThreaded c = new ChatMultiThreaded(namn, 
+                "234.235.236.237", 12540);
     }
 }

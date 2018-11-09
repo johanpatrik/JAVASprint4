@@ -1,4 +1,4 @@
-package ÖvnUppg9_Threads;
+package ÖvnUppg11_KnockKnockThreads;
 
 import ThreadDemo.TestPrg;
 import java.io.IOException;

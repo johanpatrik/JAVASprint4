@@ -1,3 +1,4 @@
+
 package ÖvnUppg6_Adressbok.Klient;
 
 import java.io.BufferedReader;
@@ -17,8 +18,10 @@ public class ObjectClient {
   
         try(
         Socket addressSocket = new Socket(hostName, portNumber);
-        ObjectOutputStream oos = new ObjectOutputStream(addressSocket.getOutputStream());
-        ObjectInputStream ois = new ObjectInputStream(addressSocket.getInputStream());){
+        ObjectOutputStream oos = new ObjectOutputStream(
+                addressSocket.getOutputStream());
+        ObjectInputStream ois = new ObjectInputStream(
+                addressSocket.getInputStream());){
            
             Kompis fromServer;
             String fromUser;

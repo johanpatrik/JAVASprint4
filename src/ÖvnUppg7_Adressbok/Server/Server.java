@@ -17,8 +17,10 @@ public class Server {
         try(
             ServerSocket serverSocket = new ServerSocket(portNumber);
             Socket clientSocket = serverSocket.accept();
-            ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
-            ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream());)
+            ObjectOutputStream oos = new ObjectOutputStream(
+                    clientSocket.getOutputStream());
+            ObjectInputStream ois = new ObjectInputStream(
+                    clientSocket.getInputStream());)
         {
             Object inputLine;
             Kompis outputPerson;
@@ -29,7 +31,8 @@ public class Server {
             //servar frågeloopen
            while ((inputLine = (String)ois.readObject()) != null) {
                
-                outputPerson = d.getPersonByName(((String)inputLine).trim());
+                outputPerson = d.getPersonByName(((String)inputLine)
+                        .trim());
                 if (outputPerson == null){
                     oos.writeObject(new Response(false));
                 }

@@ -10,7 +10,8 @@ public class Car {
     protected String model;
     protected String color;
     
-    public Car(String regnr, String owner, String model, String color){
+    public Car(String regnr, String owner, String model, 
+            String color){
         this.regnr = regnr;
         this.owner = owner;
         this.model = model;
@@ -22,7 +23,8 @@ public class Car {
     }
     
     public String getData(){
-        return "Regnummer: "+regnr+", Owner: "+owner+", Modell: "+model +", Färg: "+color;
+        return "Regnummer: "+regnr+", Owner: "+owner
+                +", Modell: "+model +", Färg: "+color;
     }
 
 }

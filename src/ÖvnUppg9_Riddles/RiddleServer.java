@@ -26,8 +26,7 @@ public class RiddleServer {
             while ((inputLine = in.readLine()) != null) {
                 outputLine = kkp.processInput(inputLine);
                 out.println(outputLine);
-                if (outputLine.equals("Bye."))
-                    break;
+   
             }
         } catch (IOException e) {
             System.out.println("Exception caught when trying to listen on port "
