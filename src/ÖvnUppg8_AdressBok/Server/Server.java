@@ -15,8 +15,10 @@ public class Server {
         try(
             ServerSocket serverSocket = new ServerSocket(portNumber);
             Socket clientSocket = serverSocket.accept();
-            ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
-            ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream());)
+            ObjectOutputStream oos = new ObjectOutputStream(clientSocket
+                    .getOutputStream());
+            ObjectInputStream ois = new ObjectInputStream(clientSocket
+                    .getInputStream());)
         {                      
             String inputLine;           
             Protokoll protocol = new Protokoll();

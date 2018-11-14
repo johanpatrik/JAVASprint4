@@ -6,9 +6,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 
-public class ÖvnUppg7_LetterCount {
+public class ÖvnUppg13_LetterCount {
 
-    public ÖvnUppg7_LetterCount () {
+    public ÖvnUppg13_LetterCount () {
 
         String temp;
         int[] fördelning = new int[1000];
@@ -46,6 +46,6 @@ public class ÖvnUppg7_LetterCount {
     }
     
     public static void main(String[] args){
-        ÖvnUppg7_LetterCount ö = new ÖvnUppg7_LetterCount();
+        ÖvnUppg13_LetterCount ö = new ÖvnUppg13_LetterCount();
     }
 }

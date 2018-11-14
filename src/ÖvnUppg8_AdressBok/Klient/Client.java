@@ -17,8 +17,10 @@ public class Client {
  
         try(
         Socket addressSocket = new Socket(hostName, portNumber);
-        ObjectOutputStream oos = new ObjectOutputStream(addressSocket.getOutputStream());
-        ObjectInputStream ois = new ObjectInputStream(addressSocket.getInputStream());){
+        ObjectOutputStream oos = new ObjectOutputStream(addressSocket
+                .getOutputStream());
+        ObjectInputStream ois = new ObjectInputStream(addressSocket
+                .getInputStream());){
         
             Object fromServer;
             String fromUser;
@@ -29,14 +31,17 @@ public class Client {
 
                 if (fromServer instanceof Initiator){
                     System.out.println("Connection setup complete");
-                    System.out.println("What person would you like to look up?");
+                    System.out.println("What person would you like "
+                            + "to look up?");
                 }
                 else if (fromServer instanceof Response){
                     if (!((Response) fromServer).getSuccess()){
-                        System.out.println("Personen finns inte i databasen");
+                        System.out.println("Personen finns inte i "
+                                + "databasen");
                     }
                     else{
-                        System.out.println(((Response) fromServer).getPerson().getAddress());
+                        System.out.println(((Response) fromServer)
+                                .getPerson().getAddress());
                     }
                 }
 
