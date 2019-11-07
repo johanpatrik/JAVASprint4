@@ -13,6 +13,7 @@ public class CarClient {
 
     CarClient() throws IOException{
         String hostName = "127.0.0.1";  //localhost
+       //  String hostName = "172.20.201.122";
         int portNumber = 12345;
 
 
@@ -30,6 +31,8 @@ public class CarClient {
         BufferedReader stdIn =
                 new BufferedReader(new InputStreamReader(System.in));
              
+        //out.println("Vilken bil vill du slå upp");
+        
         while ((fromServer = in.readLine()) != null) {
             System.out.println("Server: " + fromServer);
             

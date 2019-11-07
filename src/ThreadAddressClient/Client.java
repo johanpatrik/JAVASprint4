@@ -63,10 +63,10 @@ public class Client extends Thread{
 
     
     public static void main(String[] args){
-        Client c1 = new Client("Ett");
-        Client c2 = new Client("Två");
+        Client c1 = new Client("Två");
+        //Client c2 = new Client("Två");
         c1.start();
-        c2.start();
+       // c2.start();
     }
     
 }

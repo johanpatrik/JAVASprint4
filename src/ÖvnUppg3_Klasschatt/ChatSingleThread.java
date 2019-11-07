@@ -111,6 +111,7 @@ public class ChatSingleThread extends JFrame implements ActionListener {
     public static void main (String[] args) throws IOException{
         String namn = "Sigrun";
         ChatSingleThread c = new ChatSingleThread(namn, 
-                "234.235.236.237", 12540);
+        //        "234.235.236.237", 12540);
+                "230.1.1.1", 12345);
     }
 }

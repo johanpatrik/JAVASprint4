@@ -30,8 +30,7 @@ public class CarServer {
             out.println("Vilken bil vill du slå upp?");
             
             while ((inputLine = in.readLine()) != null) {
-                //outputLine = d.getCarData(inputLine.trim());
-                outputLine = d.getCarData(inputLine);
+                outputLine = d.getCarData(inputLine.trim());
                 if (outputLine == null){
                     out.println("Denna bil finns inte i databasen: "+inputLine);
                 }

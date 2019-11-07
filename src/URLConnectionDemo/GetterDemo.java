@@ -12,9 +12,11 @@ public class GetterDemo {
     
     public static void main(String[] args) throws MalformedURLException, IOException{
         
-        URL url = new URL("https://github.com/dwyl/english-words/blob/master/words.txt?raw=true");
+        URL url = new URL(
+                "https://github.com/dwyl/english-words/blob/master/words.txt?raw=true");
         HttpURLConnection conn= (HttpURLConnection) url.openConnection();  
-        BufferedReader buffy = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        BufferedReader buffy = new BufferedReader(
+                new InputStreamReader(conn.getInputStream()));
         String inputLine;
         while ((inputLine = buffy.readLine()) != null){
             System.out.println(inputLine);
